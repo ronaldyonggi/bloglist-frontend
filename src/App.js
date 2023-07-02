@@ -16,7 +16,26 @@ const App = () => {
     )  
   }, [])
 
-  return (
+  // Handle login functionality when login button is pressed
+  const handleLogin = async event => {
+    event.preventDefault()
+
+    try {
+      const user = await loginService.login({
+        username, password
+      })
+
+      // If logged in, set user to be the logged in user
+      setUser(user)
+      setUsername('')
+      setPassword('')
+    } catch (exception) {
+      // setErrorMessage('Wrong credentials')
+      // setTimeout(() => {
+      //   setErrorMessage(null)
+      // }, 5000)
+    }
+  }
     <div>
       <h2>blogs</h2>
       {blogs.map(blog =>
