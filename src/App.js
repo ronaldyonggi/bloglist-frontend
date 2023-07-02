@@ -9,6 +9,7 @@ const App = () => {
   const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
 
+  // Initial render retrieve all blogs from DB
   useEffect(() => {
     blogService.getAll().then(blogs =>
       setBlogs( blogs )
