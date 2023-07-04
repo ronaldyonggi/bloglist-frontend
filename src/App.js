@@ -102,6 +102,26 @@ const App = () => {
     }
 
   }
+
+  // Generate create new blog form 
+  const newBlogForm = () => (
+    <form onSubmit={handleCreateNewBlog}>
+      <div>
+        title:
+        <input type='text' value={newTitle} name="title" onChange={({ target }) => setNewTitle(target.value)}/>
+      </div>
+      <div>
+        author:
+        <input type='text' value={newAuthor} name="author" onChange={({ target }) => setNewAuthor(target.value)}/>
+      </div>
+      <div>
+        url:
+        <input type='text' value={newUrl} name="url" onChange={({ target }) => setNewUrl(target.value)}/>
+      </div>
+      <button type='submit'>create</button>
+    </form>
+  )
+
   // Generate all the blogs
   const generateBlogs = () => (
     <div>
