@@ -44,8 +44,11 @@ const App = () => {
         'loggedBlogAppUser', JSON.stringify(user)
       )
 
+      // If logged, set token
+      blogService.setToken(user.token)
       // If logged in, set user to be the logged in user
       setUser(user)
+
       setUsername('')
       setPassword('')
     } catch (exception) {
