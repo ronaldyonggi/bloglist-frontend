@@ -34,6 +34,11 @@ const App = () => {
         username, password
       })
 
+      // Save user temporarily to browser local storage
+      window.localStorage.setItem(
+        'loggedBlogAppUser', JSON.stringify(user)
+      )
+
       // If logged in, set user to be the logged in user
       setUser(user)
       setUsername('')
