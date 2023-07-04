@@ -16,6 +16,15 @@ const App = () => {
     )  
   }, [])
 
+  // Retrieve user from browser storage if a user was logged in in the first place
+  useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedBlogAppUser')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+    }
+  }, [])
+
   // Handle login functionality when login button is pressed
   const handleLogin = async event => {
     event.preventDefault()
