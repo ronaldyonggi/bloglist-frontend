@@ -51,6 +51,13 @@ const App = () => {
     }
   }
 
+  // Handle logout functionality when logout button is pressed
+  const handleLogout = () => {
+    // Remove the user from the local storage
+    window.localStorage.removeItem('loggedBlogAppUser')
+    setUser(null)
+  }
+
   // Generate login form (username and password fields)
   const loginForm = () => (
     <form onSubmit={handleLogin}>
