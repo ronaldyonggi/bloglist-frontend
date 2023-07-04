@@ -82,6 +82,26 @@ const App = () => {
     </form>
   )
 
+  // Handle adding new blog (create button is pressed)
+  const handleCreateNewBlog = async event => {
+    event.preventDefault()
+    const blogToBeAdded = {
+      title: newTitle,
+      author: newAuthor,
+      url: newUrl
+    }
+
+    try {
+      let addBlogResponse = await blogService.create(blogToBeAdded)
+      setBlogs(blogs.concat(addBlogResponse))
+      setNewTitle('')
+      setNewAuthor('')
+      setNewUrl('')
+    } catch (exception) {
+      console.log(exception)
+    }
+
+  }
   // Generate all the blogs
   const generateBlogs = () => (
     <div>
