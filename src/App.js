@@ -25,6 +25,8 @@ const App = () => {
     if (loggedUserJSON) {
       const user = JSON.parse(loggedUserJSON)
       setUser(user)
+      // Don't forget to set token as well
+      blogService.setToken(user.token)
     }
   }, [])
 
