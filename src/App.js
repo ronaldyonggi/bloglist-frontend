@@ -131,8 +131,6 @@ const App = () => {
     </div>
   )
 
-
-
   return (
     <div>
       {!user && <h2>log in to application</h2>}
@@ -146,6 +144,8 @@ const App = () => {
         <p>{user.name} logged in
         <button onClick={handleLogout}>logout</button>
         </p>
+        <h2>create new</h2>
+        {newBlogForm()}
         {generateBlogs()}
         </div>
         }
