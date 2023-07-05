@@ -11,6 +11,10 @@ const App = () => {
   const [newTitle, setNewTitle] = useState('')
   const [newAuthor, setNewAuthor] = useState('')
   const [newUrl, setNewUrl] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+
+  // Determines whether the error message is an error
+  const [isError, setIsError] = useState(false)
 
   // Initial render retrieve all blogs from DB
   useEffect(() => {
