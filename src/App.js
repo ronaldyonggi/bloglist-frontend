@@ -102,6 +102,11 @@ const App = () => {
       setNewTitle('')
       setNewAuthor('')
       setNewUrl('')
+      setIsError(false)
+      setErrorMessage(`a new blog ${blogToBeAdded.title} by ${blogToBeAdded.author} added`)
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
     } catch (exception) {
       console.log(exception)
     }
