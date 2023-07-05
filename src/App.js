@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Blog from './components/Blog'
+import Error from './components/Error'
 import blogService from './services/blogs'
 import loginService from './services/login'
 
