@@ -108,7 +108,11 @@ const App = () => {
         setErrorMessage(null)
       }, 5000)
     } catch (exception) {
-      console.log(exception)
+      setIsError(true)
+      setErrorMessage(exception)
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
     }
 
   }
