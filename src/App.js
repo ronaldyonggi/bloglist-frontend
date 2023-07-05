@@ -149,6 +149,10 @@ const App = () => {
     <div>
       {!user && <h2>log in to application</h2>}
       {user && <h2>blogs</h2>}
+
+      {/* If it's an error message, uses error css class, otherwise use message css class */}
+      <Error message={errorMessage} divClass={isError ? 'error' : 'message'}/>
+      
       {/* {blogs.map(blog =>
         <Blog key={blog.id} blog={blog} />
       )} */}
