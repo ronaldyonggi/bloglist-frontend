@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Blog from './components/Blog'
 import Error from './components/Error'
 import blogService from './services/blogs'
 import loginService from './services/login'
+import Togglable from './components/Togglable'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
@@ -13,6 +14,7 @@ const App = () => {
   const [newAuthor, setNewAuthor] = useState('')
   const [newUrl, setNewUrl] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
+  const blogFormRef = useRef(null)
 
   // Determines whether the error message is an error
   const [isError, setIsError] = useState(false)
@@ -96,6 +98,7 @@ const App = () => {
       author: newAuthor,
       url: newUrl
     }
+    blogFormRef.current.toggleVisibility()
 
     try {
       let addBlogResponse = await blogService.create(blogToBeAdded)
@@ -163,8 +166,10 @@ const App = () => {
         <p>{user.name} logged in
         <button onClick={handleLogout}>logout</button>
         </p>
-        <h2>create new</h2>
-        {newBlogForm()}
+        <Togglable buttonLabel="new blog" ref={blogFormRef}>
+          <h2>create new</h2>
+          {newBlogForm()}
+        </Togglable>
         {generateBlogs()}
         </div>
         }
