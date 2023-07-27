@@ -19,9 +19,11 @@ const App = () => {
 
   // Initial render retrieve all blogs from DB
   useEffect(() => {
-    blogService.getAll().then(blogs =>
-      setBlogs( blogs )
+    blogService.getAll()
+    .then(blogs =>
+      blogs.sort((a, b) => a.likes - b.likes).reverse()
     )  
+    .then(blogs => setBlogs(blogs))
   }, [])
 
   // Retrieve user from browser storage if a user was logged in in the first place
