@@ -115,7 +115,7 @@ const App = () => {
 
   // Handle pressing like button
   const handleLikeIncrease = async blogObject => {
-    // Create the updated blog from the old blog
+    // Create the updated blog object from the old blog
     const updatedBlog = {
       ...blogObject, 
       // Update the likes
@@ -125,10 +125,10 @@ const App = () => {
       user: blogObject.user.id
     }
     try {
-      // let updateBlogResponse = await blogService.update(blogObject.id, updatedBlog)
-      await blogService.update(blogObject.id, updatedBlog)
-      // Update blogs state
-      setBlogs(blogs.map(blog => blog.id === blogObject.id ? updatedBlog : blog))
+      const responseBlog = await blogService.update(blogObject.id, updatedBlog)
+      // Update blogs state. Make sure the blog that is supposed to be updated IS
+      // UPDATED WITH responseBlog, NOT updatedBlog!!
+      setBlogs(blogs.map(blog => blog.id === blogObject.id ? responseBlog : blog))
     } catch(exception) {
 
     }
