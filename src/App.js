@@ -130,7 +130,12 @@ const App = () => {
       const responseBlog = await blogService.update(blogObject.id, updatedBlog)
       // Update blogs state. Make sure the blog that is supposed to be updated IS
       // UPDATED WITH responseBlog, NOT updatedBlog!!
-      setBlogs(blogs.map(blog => blog.id === blogObject.id ? responseBlog : blog))
+      // setBlogs(blogs.map(blog => blog.id === blogObject.id ? responseBlog : blog))
+      setBlogs(blogs
+        .map(blog => blog.id === blogObject.id ? responseBlog : blog)
+        .sort((a, b) => a.likes - b.likes)
+        .reverse()
+        )
     } catch(exception) {
 
     }
