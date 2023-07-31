@@ -16,7 +16,7 @@ const getAll = () => {
 const create = async newBlog => {
   // Sets token to the authorization header
   const config = {
-    headers: { Authorization: token}
+    headers: { Authorization: token }
   }
 
   // Header is given to axios as 3rd parameter of post method
@@ -34,9 +34,9 @@ const update = async (id, newObject) => {
 const deleteBlog = async id => {
 
   const config = {
-    headers: { Authorization: token}
+    headers: { Authorization: token }
   }
-  
+
   return await axios.delete(`${baseUrl}/${id}`, config)
 }
 
