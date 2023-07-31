@@ -20,10 +20,10 @@ const App = () => {
   // Initial render retrieve all blogs from DB
   useEffect(() => {
     blogService.getAll()
-    .then(blogs =>
-      blogs.sort((a, b) => a.likes - b.likes).reverse()
-    )  
-    .then(blogs => setBlogs(blogs))
+      .then(blogs =>
+        blogs.sort((a, b) => a.likes - b.likes).reverse()
+      )
+      .then(blogs => setBlogs(blogs))
   }, [])
 
   // Retrieve user from browser storage if a user was logged in in the first place
@@ -119,7 +119,7 @@ const App = () => {
   const handleLikeIncrease = async blogObject => {
     // Create the updated blog object from the old blog
     const updatedBlog = {
-      ...blogObject, 
+      ...blogObject,
       // Update the likes
       likes : blogObject.likes + 1,
       // The user needs to be the user id, not the whole user object.
@@ -135,8 +135,13 @@ const App = () => {
         .map(blog => blog.id === blogObject.id ? responseBlog : blog)
         .sort((a, b) => a.likes - b.likes)
         .reverse()
-        )
+      )
     } catch(exception) {
+      setIsError(true)
+      setErrorMessage(exception)
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
     }
   }
 
@@ -148,6 +153,11 @@ const App = () => {
         setBlogs(blogs.filter(blog => blog.id !== blogObject.id))
       }
     } catch(exception) {
+      setIsError(true)
+      setErrorMessage(exception)
+      setTimeout(() => {
+        setErrorMessage(null)
+      }, 5000)
     }
 
   }
@@ -156,9 +166,9 @@ const App = () => {
   // Generate all the blogs
   const generateBlogs = () => (
     <div>
-      {blogs.map(blog => 
+      {blogs.map(blog =>
         <Blog key={blog.id} blog={blog} handleLike={handleLikeIncrease} user={user} handleDelete={handleDelete} />
-        )}
+      )}
     </div>
   )
 
@@ -169,7 +179,7 @@ const App = () => {
 
       {/* If it's an error message, uses error css class, otherwise use message css class */}
       <Error message={errorMessage} divClass={isError ? 'error' : 'message'}/>
-      
+
       {/* {blogs.map(blog =>
         <Blog key={blog.id} blog={blog} />
       )} */}
@@ -177,15 +187,15 @@ const App = () => {
       {!user && loginForm()}
       {user && <div>
         <p>{user.name} logged in
-        <button onClick={handleLogout}>logout</button>
+          <button onClick={handleLogout}>logout</button>
         </p>
         <Togglable buttonLabel="new blog" ref={blogFormRef}>
           <h2>create new</h2>
           <BlogForm createBlog={handleCreateNewBlog} />
         </Togglable>
         {generateBlogs()}
-        </div>
-        }
+      </div>
+      }
     </div>
   )
 }
