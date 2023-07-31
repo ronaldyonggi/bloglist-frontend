@@ -1,7 +1,7 @@
 
 import { useState } from "react"
 
-const Blog = ({ blog, handleLike }) => {
+const Blog = ({ blog, handleLike, user, handleDelete }) => {
   const blogStyle = {
     paddingTop: 10,
     paddingLeft: 2,
@@ -29,6 +29,11 @@ const Blog = ({ blog, handleLike }) => {
       <div>
         {detail && blog.user.name}
       </div>
+      {user.id === blog.user.id && 
+        <div>
+          <button onClick={() => handleDelete(blog)}>remove</button>
+        </div>
+      }
     </div>
   )
 }
