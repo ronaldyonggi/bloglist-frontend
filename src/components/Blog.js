@@ -1,6 +1,6 @@
 
 import PropTypes from 'prop-types'
-import { useState } from "react"
+import { useState } from 'react'
 
 const Blog = ({ blog, handleLike, user, handleDelete }) => {
   const blogStyle = {
@@ -10,7 +10,7 @@ const Blog = ({ blog, handleLike, user, handleDelete }) => {
     borderWidth: 1,
     marginBottom: 5
   }
-  
+
   const [detail, setDetail] = useState(false)
 
   return (
@@ -23,14 +23,14 @@ const Blog = ({ blog, handleLike, user, handleDelete }) => {
       </div>
       <div>
         {detail && <>
-        likes {blog.likes} 
-        <button onClick={() => handleLike(blog)}>like</button>
+        likes {blog.likes}
+          <button onClick={() => handleLike(blog)}>like</button>
         </>}
       </div>
       <div>
         {detail && blog.user.name}
       </div>
-      {user.id === blog.user.id && 
+      {user.id === blog.user.id &&
         <div>
           <button onClick={() => handleDelete(blog)}>remove</button>
         </div>

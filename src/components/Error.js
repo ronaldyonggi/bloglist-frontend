@@ -1,4 +1,4 @@
-const Error = ({message, divClass}) => {
+const Error = ({ message, divClass }) => {
   return message ? (
     <div className={divClass}>
       {message}
