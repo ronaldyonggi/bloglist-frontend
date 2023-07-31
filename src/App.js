@@ -143,8 +143,10 @@ const App = () => {
   // Handle deleting a blog
   const handleDelete = async blogObject => {
     try {
-      await blogService.deleteBlog(blogObject.id)
-      setBlogs(blogs.filter(blog => blog.id !== blogObject.id))
+      if (window.confirm(`Remove blog ${blogObject.title} by ${blogObject.author}`)) {
+        await blogService.deleteBlog(blogObject.id)
+        setBlogs(blogs.filter(blog => blog.id !== blogObject.id))
+      }
     } catch(exception) {
     }
 
