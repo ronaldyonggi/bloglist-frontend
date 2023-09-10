@@ -6,8 +6,14 @@ import { render, screen } from '@testing-library/react'
 
 describe('<Blog />', () => {
 
-  test('renders title and author but not URL and number of likes', () => {
-    const blogObject = {
+  // Declare variables before each test
+  let blogObject
+  let testUser
+  let mockHandler
+  let container
+
+  beforeEach(() => {
+    blogObject = {
       title: 'Testing blog title',
       author: 'Mr Jenkins',
       url: 'www.testingreact.io',
@@ -17,14 +23,20 @@ describe('<Blog />', () => {
       }
     }
 
-    const testUser = {
+    testUser = {
       username: 'testUsername',
       name:'testName',
       password: 'lol',
       id: '1234'
     }
 
-    render(<Blog blog={blogObject} user={testUser}/>)
+    mockHandler = jest.fn()
+    container = render(<Blog blog={blogObject} user={testUser} handleDelete={mockHandler} handleLike={mockHandler}/>)
+
+  })
+
+  test('renders title and author but not URL and number of likes', () => {
+    // render(<Blog blog={blogObject} user={testUser}/>)
 
     const title = screen.getByText('Testing blog title', { exact: false })
     const author = screen.getByText('Mr Jenkins', { exact: false })
