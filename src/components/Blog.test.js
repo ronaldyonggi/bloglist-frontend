@@ -50,26 +50,6 @@ describe('<Blog />', () => {
   })
 
   test('renders URL and number of likes if the view button is pressed', async () => {
-    const blogObject = {
-      title: 'Testing blog title',
-      author: 'Mr Jenkins',
-      url: 'www.testingreact.io',
-      likes: 37,
-      user: {
-        id: 1234
-      }
-    }
-
-    const testUser = {
-      username: 'testUsername',
-      name:'testName',
-      password: 'lol',
-      id: '1234'
-    }
-    const mockHandler = jest.fn()
-
-    render(<Blog blog={blogObject} user={testUser} handleLike={mockHandler} handleDelete={mockHandler}/>)
-
     const user = userEvent.setup()
     const viewButton = screen.getByText('view')
     await user.click(viewButton)
