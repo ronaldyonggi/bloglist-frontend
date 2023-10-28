@@ -77,20 +77,20 @@ const App = () => {
   }
 
   // Generate login form (username and password fields)
-  const loginForm = () => (
-    <form onSubmit={handleLogin}>
-      <div>
-        username
-        <input type='text' value={username} name="Username" onChange={({ target }) => setUsername(target.value)}/>
-      </div>
+  // const loginForm = () => (
+  //   <form onSubmit={handleLogin}>
+  //     <div>
+  //       username
+  //       <input type='text' value={username} name="Username" onChange={({ target }) => setUsername(target.value)}/>
+  //     </div>
 
-      <div>
-        password
-        <input type='password' value={password} name="Password" onChange={({ target }) => setPassword(target.value)}/>
-      </div>
-      <button type='submit'>login</button>
-    </form>
-  )
+  //     <div>
+  //       password
+  //       <input type='password' value={password} name="Password" onChange={({ target }) => setPassword(target.value)}/>
+  //     </div>
+  //     <button type='submit'>login</button>
+  //   </form>
+  // )
 
   // Handle adding new blog (create button is pressed)
   const handleCreateNewBlog = async blogObject => {
