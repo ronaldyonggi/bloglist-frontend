@@ -189,7 +189,7 @@ const App = () => {
 
       {!user &&
         <Togglable buttonLabel="log in" ref={loginFormRef}>
-        <LoginForm login={handleLogin}></LoginForm>
+          <LoginForm login={handleLogin}></LoginForm>
         </Togglable>
       }
 
