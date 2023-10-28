@@ -11,6 +11,14 @@ describe('Blog app', () => {
   })
 
   it('Login form is shown', function() {
-    cy.contains('login')
+  describe('Login', function() {
+    it('succeeds with correct credentials', function() {
+      cy.contains('button','log in').click()
+      cy.get('#username').type('mluukkai')
+      cy.get('#password').type('salainen')
+      cy.get('#login-button').click()
+
+      cy.contains('Matti Luukkainen logged in')
+    })
   })
 })
