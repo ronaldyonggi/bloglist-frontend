@@ -14,6 +14,7 @@ const App = () => {
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState('')
   const blogFormRef = useRef(null)
+  const loginFormRef = useRef(null)
 
   // Determines whether the error message is an error
   const [isError, setIsError] = useState(false)
