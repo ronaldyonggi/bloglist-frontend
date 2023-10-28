@@ -8,8 +8,8 @@ import BlogForm from './components/BlogForm'
 
 const App = () => {
   const [blogs, setBlogs] = useState([])
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+  // const [username, setUsername] = useState('')
+  // const [password, setPassword] = useState('')
   const [user, setUser] = useState(null)
   const [errorMessage, setErrorMessage] = useState('')
   const blogFormRef = useRef(null)
@@ -38,7 +38,8 @@ const App = () => {
   }, [])
 
   // Handle login functionality when login button is pressed
-  const handleLogin = async event => {
+  // username and password is provided from LoginForm component
+  const handleLogin = async (username, password) => {
     event.preventDefault()
 
     try {
@@ -56,8 +57,8 @@ const App = () => {
       // If logged in, set user to be the logged in user
       setUser(user)
 
-      setUsername('')
-      setPassword('')
+      // setUsername('')
+      // setPassword('')
     } catch (exception) {
       setIsError(true)
       setErrorMessage('Wrong username or password')
