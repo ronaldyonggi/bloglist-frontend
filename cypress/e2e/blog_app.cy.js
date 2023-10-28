@@ -11,6 +11,10 @@ describe('Blog app', () => {
   })
 
   it('Login form is shown', function() {
+    cy.contains('button','log in').click()
+    cy.contains('login')
+  })
+
   describe('Login', function() {
     it('succeeds with correct credentials', function() {
       cy.contains('button','log in').click()
