@@ -188,7 +188,9 @@ const App = () => {
       )} */}
 
       {!user &&
+        <Togglable buttonLabel="log in" ref={loginFormRef}>
         <LoginForm login={handleLogin}></LoginForm>
+        </Togglable>
       }
 
       {user && <div>
