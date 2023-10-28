@@ -20,5 +20,22 @@ describe('Blog app', () => {
 
       cy.contains('Matti Luukkainen logged in')
     })
+
+    it('fails with wrong credentials', function() {
+      cy.contains('button', 'log in').click()
+      cy.get('#username').type('mluukkai')
+      cy.get('#password').type('wrong')
+      cy.get('#login-button').click()
+
+      // Ensures error is displayed in red
+      // cy.contains('Wrong username or password')
+      cy.get('.error')
+        .should('contain', 'Wrong username or password')
+        .and('have.css', 'color', 'rgb(255, 0, 0)')
+        .and('have.css', 'border-style', 'solid')
+
+      // Ensure user log in message is not displayed
+      cy.get('html').should('not.contain', 'Matti Luukkainen logged in')
+    })
   })
 })
