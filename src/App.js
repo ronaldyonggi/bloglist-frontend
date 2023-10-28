@@ -186,7 +186,10 @@ const App = () => {
         <Blog key={blog.id} blog={blog} />
       )} */}
 
-      {!user && loginForm()}
+      {!user &&
+        <LoginForm login={handleLogin}></LoginForm>
+      }
+
       {user && <div>
         <p>{user.name} logged in
           <button onClick={handleLogout}>logout</button>
