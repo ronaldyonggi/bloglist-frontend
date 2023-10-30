@@ -62,7 +62,7 @@ describe('Blog app', () => {
       cy.contains('A blog created by cypress')
     })
 
-    it.only('User can like a blog', function() {
+    it('User can like a blog', function() {
       cy.createBlog({
         title: 'A blog created by cypress',
         author: 'Cypress',
@@ -73,6 +73,19 @@ describe('Blog app', () => {
       cy.contains('like').click()
 
       cy.contains('likes 1')
+    })
+
+    it.only('User who created a blog can delete it', function() {
+      cy.createBlog({
+        title: 'A blog created by cypress',
+        author: 'Cypress',
+        url: 'www.cypress.io'
+      })
+
+      cy.contains('view').click()
+      cy.contains('remove').click()
+
+      cy.get('html').should('not.contain', 'A blog created by cypress')
     })
 
   })
