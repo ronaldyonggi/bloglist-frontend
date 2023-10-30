@@ -6,7 +6,14 @@ describe('Blog app', () => {
       username: 'mluukkai',
       password: 'salainen'
     }
+
+    const otherUser = {
+      name: 'Another User',
+      username: 'other',
+      password: 'abc123',
+    }
     cy.request('POST', `${Cypress.env('BACKEND')}/users/`, user)
+    cy.request('POST', `${Cypress.env('BACKEND')}/users/`, otherUser)
     cy.visit('')
   })
 
