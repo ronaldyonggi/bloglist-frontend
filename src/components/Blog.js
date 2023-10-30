@@ -14,7 +14,7 @@ const Blog = ({ blog, handleLike, user, handleDelete }) => {
   const [detail, setDetail] = useState(false)
 
   return (
-    <div style={blogStyle}>
+    <div style={blogStyle} className='blog'>
       {blog.title} | {blog.author}
       {detail && <button onClick={() => setDetail(!detail)}>hide</button>}
       {!detail && <button onClick={() => setDetail(!detail)}>view</button>}
