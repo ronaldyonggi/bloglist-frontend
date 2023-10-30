@@ -82,7 +82,7 @@ describe('Blog app', () => {
       cy.contains('likes 1')
     })
 
-    it.only('User who created a blog can delete it', function() {
+    it('User who created a blog can delete it', function() {
       cy.createBlog({
         title: 'A blog created by cypress',
         author: 'Cypress',
@@ -95,5 +95,26 @@ describe('Blog app', () => {
       cy.get('html').should('not.contain', 'A blog created by cypress')
     })
 
+    it.only('Only the creator can see delete button of a blog', function() {
+      cy.createBlog({
+        title: 'A blog created by cypress',
+        author: 'Cypress',
+        url: 'www.cypress.io'
+      })
+
+      cy.contains('logout').click()
+      cy.login({
+        username: 'other',
+        password: 'abc123'
+      })
+
+      cy.contains('view').click()
+
+      cy.contains('remove').should('not.exist')
+
+    })
+
   })
+
+
 })
