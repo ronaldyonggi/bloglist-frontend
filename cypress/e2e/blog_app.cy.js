@@ -7,7 +7,7 @@ describe('Blog app', () => {
       password: 'salainen'
     }
     cy.request('POST', `${Cypress.env('BACKEND')}/users/`, user)
-    cy.visit('http://localhost:3000')
+    cy.visit('')
   })
 
   it('Login form is shown', function() {
