@@ -95,7 +95,7 @@ describe('Blog app', () => {
       cy.get('html').should('not.contain', 'A blog created by cypress')
     })
 
-    it.only('Only the creator can see delete button of a blog', function() {
+    it('Only the creator can see delete button of a blog', function() {
       cy.createBlog({
         title: 'A blog created by cypress',
         author: 'Cypress',
@@ -114,7 +114,33 @@ describe('Blog app', () => {
 
     })
 
-  })
+    it.only('Blogs are ordered according to likes', function() {
+      cy.createBlog({
+        title: 'How to create a test',
+        author: 'Dan Brown',
+        url: 'www.dantest.com',
+        likes: 395
+      })
 
+      cy.createBlog({
+        title: 'Is this how it all started?',
+        author: 'Cindy Gallan',
+        url: 'www.dcind.io',
+        likes: 184
+      })
+
+      cy.createBlog({
+        title: 'Heyo',
+        author: 'Anonymous',
+        url: 'www.hacker.io',
+        likes: 8
+      })
+
+      cy.get('.blog').eq(0).should('contain', 'How to create a test')
+      cy.get('.blog').eq(1).should('contain', 'Is this how it all started?')
+
+    })
+
+  })
 
 })
