@@ -25,17 +25,17 @@ const BlogForm = ({ createBlog }) => {
     <form onSubmit={addBlog}>
       <div>
         title:
-        <input type='text' value={newTitle} name="title" onChange={({ target }) => setNewTitle(target.value)} placeholder='title'/>
+        <input type='text' value={newTitle} name="title" onChange={({ target }) => setNewTitle(target.value)} placeholder='title' data-cy="input-title"/>
       </div>
       <div>
         author:
-        <input type='text' value={newAuthor} name="author" onChange={({ target }) => setNewAuthor(target.value)} placeholder='author'/>
+        <input type='text' value={newAuthor} name="author" onChange={({ target }) => setNewAuthor(target.value)} placeholder='author' data-cy="input-author"/>
       </div>
       <div>
         url:
-        <input type='text' value={newUrl} name="url" onChange={({ target }) => setNewUrl(target.value)} placeholder='url'/>
+        <input type='text' value={newUrl} name="url" onChange={({ target }) => setNewUrl(target.value)} placeholder='url' data-cy="input-url"/>
       </div>
-      <button type='submit'>create</button>
+      <button type='submit' data-cy="button-create">create</button>
     </form>
   )
 }
