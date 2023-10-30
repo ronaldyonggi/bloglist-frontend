@@ -49,16 +49,10 @@ describe('Blog app', () => {
         username: 'mluukkai',
         password: 'salainen'
       })
+
     })
 
-    // it.only('A blog can be created', function() {
-    //   cy.createBlog({
-    //     title: 'A blog created by cypress',
-    //     author: 'Cypress',
-    //     url: 'www.cypress.io'
-    //   })
-    // })
-    it.only('A blog can be created', function() {
+    it('A blog can be created', function() {
       cy.contains('new blog').click()
       cy.get('[data-cy="input-title"]').type('A blog created by cypress')
       cy.get('[data-cy="input-author"]').type('Cypress')
@@ -67,5 +61,19 @@ describe('Blog app', () => {
       cy.get('[data-cy="button-create"]').click()
       cy.contains('A blog created by cypress')
     })
+
+    it.only('User can like a blog', function() {
+      cy.createBlog({
+        title: 'A blog created by cypress',
+        author: 'Cypress',
+        url: 'www.cypress.io'
+      })
+
+      cy.contains('view').click()
+      cy.contains('like').click()
+
+      cy.contains('likes 1')
+    })
+
   })
 })
